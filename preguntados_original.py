@@ -1,6 +1,5 @@
 from lista_preguntados import lista
 from constantes_preguntados import *
-from Funciones import * 
 import pygame
 
 lista_preguntas = []

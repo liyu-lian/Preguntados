@@ -2,8 +2,6 @@ import pygame
 
 TAMAÑO_VENTANA = (1200, 1000)
 
-
-
 COLOR_BLANCO = (255,255,255)
 
 COLOR_PANTALLA = (202, 155, 220)
