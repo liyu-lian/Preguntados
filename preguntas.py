@@ -2,6 +2,7 @@ import pygame
 from constantes_preguntados import *
 
 def tomar_datos(clave):
+    """"""
     lista_dato = []
 
     for elemento in lista:

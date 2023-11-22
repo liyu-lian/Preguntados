@@ -19,6 +19,7 @@ class Botones:
         self.rect_btn_C = pygame.Rect(RECT_C)
 
         self.posicion_correcta = 0
+        # self.bloquear_suma = False
 
     def dibujar_boton(self,pantalla,posicion,boton):
         if boton == "reiniciar":
@@ -29,11 +30,11 @@ class Botones:
             boton = self.boton_vacio
 
         pantalla.blit(boton,posicion)
-        pygame.draw.rect(pantalla,COLOR_NEGRO,(RECT_PREGUNTA),2)
-        pygame.draw.rect(pantalla,COLOR_NEGRO,(RECT_REINICIAR),2)
-        pygame.draw.rect(pantalla,COLOR_ROJO,(RECT_A),2)
-        pygame.draw.rect(pantalla,COLOR_ROJO,(RECT_B),2)
-        pygame.draw.rect(pantalla,COLOR_ROJO,(RECT_C),2)
+        # pygame.draw.rect(pantalla,COLOR_NEGRO,(RECT_PREGUNTA),2)
+        # pygame.draw.rect(pantalla,COLOR_NEGRO,(RECT_REINICIAR),2)
+        # pygame.draw.rect(pantalla,COLOR_ROJO,(RECT_A),2)
+        # pygame.draw.rect(pantalla,COLOR_ROJO,(RECT_B),2)
+        # pygame.draw.rect(pantalla,COLOR_ROJO,(RECT_C),2)
 
     def dibujar_recuadro(self,pantalla,posicion):
         recuadro = pygame.image.load(PATH_BOTON+"recuadro.png")
@@ -45,6 +46,7 @@ class Botones:
         if self.rect_btn_pregunta.collidepoint(x, y):
             posicion = pregunta.pasar_pregunta()
             lista_render = pregunta.rendear_preguntas(fuente)
+            jugador.activar_interaccion()
             self.posicion_correcta = posicion
         elif self.rect_btn_reiniciar.collidepoint(x,y):
             pregunta.reiniciar_posicion()
@@ -53,16 +55,20 @@ class Botones:
             lista_render = pregunta.rendear_preguntas(fuente)
         else:
             lista_render = pregunta.rendear_preguntas(fuente)
+
         
         if self.rect_btn_A.collidepoint(x,y):
             jugador.administrar_puntos("a",self.posicion_correcta)
             lista_puntos_vida = jugador.rendear_puntos(fuente=fuente)
+            jugador.desactivar_interaccion()
         elif self.rect_btn_B.collidepoint(x,y):
             jugador.administrar_puntos("b",self.posicion_correcta)
             lista_puntos_vida = jugador.rendear_puntos(fuente=fuente)
+            jugador.desactivar_interaccion()
         elif self.rect_btn_C.collidepoint(x,y):
             jugador.administrar_puntos("c",self.posicion_correcta)
             lista_puntos_vida = jugador.rendear_puntos(fuente=fuente)
+            jugador.desactivar_interaccion()
         else:
             lista_puntos_vida = jugador.rendear_puntos(fuente=fuente)
 
